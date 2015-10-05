@@ -1,0 +1,19 @@
+{
+  "name": "tkpowerv3",
+  "version": "0.0.3",
+  "description": "tkpower data collector",
+  "main": "tkpower.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Tim Krapil",
+  "license": "ISC",
+  "dependencies": {
+    "elasticsearch": "^8.2.0",
+    "moment": "^2.10.6",
+    "rsmq": "^0.3.16",
+    "rsmq-worker": "^0.3.7",
+    "serialport": "^1.7.4",
+    "ya-csv": "^0.9.4"
+  }
+}
