@@ -1,0 +1,12 @@
+{
+      "plotwattAPIkey" : "xxxxxxxxxxxxxxx",
+      "plotwattMeterID" : "12345",
+      "elasticsearchHost": "http://10.0.0.1:9200",
+      "logFilePath" : "/home/pi/tkpower/logs/tkpower.log",
+      "jsonFilePath" : "/home/pi/tkpower/logs/tkpower.json",
+      "boolPlotwatt" : true,
+      "booljsonFile" : true,
+      "boolElasticsearch" : true,
+      "boolCSVfile" : false
+
+}

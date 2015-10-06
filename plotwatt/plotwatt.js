@@ -1,8 +1,10 @@
+var config = require('./config.json');
+
 
 var RSMQWorker = require( "rsmq-worker" );
 var worker = new RSMQWorker( "plotwatt" );
-  var apikey = "OTYyYTY5MmFjYTc3"
-  var meter = "11779878";
+  var apikey = config.plotwattAPIkey;
+  var meter = config.plotwattMeterID;
 
 var msgs = [];
 
@@ -96,10 +98,10 @@ function postPlotWatt(watts, times){
 
         var args = "-X POST -d \"" + postData + "\" http://" + apikey + ":@plotwatt.com/api/v2/push_readings";
 
-        console.log(args);
+        //console.log(args);
 
         exec('curl ' + args, function (error, stdout, stderr) {
-          console.log('stdout: ' + stdout);
+          //console.log('stdout: ' + stdout);
           //console.log('stderr: ' + stderr);
           if (error !== null) {
             console.log('exec error: ' + error);
