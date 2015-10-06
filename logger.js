@@ -1,11 +1,13 @@
 //*******CONFIGS***********
-var boolPlotwatt = true;
-var booljsonFile = true;
-var boolElasticsearch = true;
-var boolCSVfile = false;
 
-var jsonFilePath = "/home/pi/tkpower/logs/tkpower.log.json";
-var logFilePath = "/home/pi/tkpower/logs/tkpower.log";
+var config = require('./config.js');
+
+
+var jsonFilePath = config.jsonFilePath;
+var logFilePath = config.logFilePath;
+
+console.log(logFilePath);
+console.log(jsonFilePath);
 
 //******************************
 
@@ -30,10 +32,10 @@ var esclient = new elasticsearch.Client({
   worker.on( "message", function( msg, next ){
 
 	//console.log(msg);
-  if (boolPlotwatt) {plotwattQueue(msg)};
+  if (config.boolPlotwatt) {plotwattQueue(msg)};
   objData = parseData(msg);
   writeFile(objData, msg);
-  if (boolElasticsearch) {writeElasticSearch(objData)};
+  if (config.boolElasticsearch) {writeElasticSearch(objData)};
 
   next()
   });
@@ -89,7 +91,7 @@ var esclient = new elasticsearch.Client({
     //if (err) throw err;
     //console.log("log file");
   });
-    if (booljsonFile){
+    if (config.booljsonFile){
       fs.appendFile(jsonFilePath, JSON.stringify(fileData) + "\n", function (err) {
         //eat the error
         //if (err) throw err;
