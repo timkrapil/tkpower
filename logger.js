@@ -1,10 +1,13 @@
 //*******CONFIGS***********
 
-var config = require('./config.json');
+var config = require('./config.js');
 
 
 var jsonFilePath = config.jsonFilePath;
 var logFilePath = config.logFilePath;
+
+console.log(logFilePath);
+console.log(jsonFilePath);
 
 //******************************
 

@@ -1,0 +1,11 @@
+var config = {};
+
+config.plotwattAPIkey = 'xxxxxxxxxxxxxxx';
+config.plotwattMeterID = 'xxxxxxxxxxxxxxx';
+config.elasticsearchHost = '';
+config.logFilePath = '/home/pi/tkpower/logs/tkpower.log';
+config.jsonFilePath = '/home/pi/tkpower/logs/tkpower.json';
+config.boolPlotwatt = true;
+config.booljsonFile = true;
+config.boolElasticsearch = true;
+config.boolCSVfile = false;

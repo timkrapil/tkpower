@@ -1,4 +1,4 @@
-var config = require('./config.json');
+var config = require('./config.js');
 
 
 var serialport = require('serialport');// include the library
