@@ -1,4 +1,4 @@
-var config = require('./config.js');
+var config = require('../config.js');
 
 
 var RSMQWorker = require( "rsmq-worker" );
@@ -72,13 +72,6 @@ worker.start();
 //worker.stop();
 
 
-
-
-
-
-
-
-
 function postPlotWatt(watts, times){
 
 
@@ -101,10 +94,10 @@ function postPlotWatt(watts, times){
         //console.log(args);
 
         exec('curl ' + args, function (error, stdout, stderr) {
-          //console.log('stdout: ' + stdout);
+          console.log('stdout: ' + stdout);
           //console.log('stderr: ' + stderr);
           if (error !== null) {
-            console.log('exec error: ' + error);
+            console.log('stderr: ' + error);
           }
         });
 
