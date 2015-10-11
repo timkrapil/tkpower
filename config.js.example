@@ -9,4 +9,5 @@ config.boolPlotwatt = true;
 config.booljsonFile = true;
 config.boolElasticsearch = true;
 config.boolCSVfile = false;
+config.boolLoggly = false;
 module.exports = config;

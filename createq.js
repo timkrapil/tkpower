@@ -12,3 +12,9 @@ rsmq.createQueue({qname:"tkserial"}, function (err, resp) {
             console.log("queue created")
         }
 });
+
+rsmq.createQueue({qname:"loggly"}, function (err, resp) {
+        if (resp===1) {
+            console.log("queue created")
+        }
+});

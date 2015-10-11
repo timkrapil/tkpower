@@ -6,8 +6,8 @@ var config = require('./config.js');
 var jsonFilePath = config.jsonFilePath;
 var logFilePath = config.logFilePath;
 
-console.log(logFilePath);
-console.log(jsonFilePath);
+//console.log(logFilePath);
+//console.log(jsonFilePath);
 
 //******************************
 
@@ -36,6 +36,8 @@ var esclient = new elasticsearch.Client({
   objData = parseData(msg);
   writeFile(objData, msg);
   if (config.boolElasticsearch) {writeElasticSearch(objData)};
+  if (config.boolLoggly) {logglyQueue(objData)};
+
 
   next()
   });
@@ -50,6 +52,28 @@ var esclient = new elasticsearch.Client({
   worker.on('timeout', function( msg ){
       console.log( "TIMEOUT", msg.id, msg.rc );
   });
+
+  function logglyQueue(objData){
+    var LogglyData = {
+      ts: (objData.date),
+      watts1: (objData.watts1),
+      amps1: (objData.amps1),
+      watts0: (objData.watts0),
+      amps0: (objData.amps0),
+      totalwatts:(objData.sumwatts),
+      totalamps:(objData.sumamps)
+    };
+
+    rsmq.sendMessage({qname:"loggly", message:(LogglyData)}, function (err, resp) {
+     if (err) {
+         console.log(err);
+     }
+     //console.log("loggly");
+   });
+
+
+
+  }
 
   function writeElasticSearch(objData){
     var ts = Date.parse(objData.date);
