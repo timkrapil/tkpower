@@ -1,17 +1,16 @@
-var config = require('../config.js');
+var config = require('./config.js');
 
 
 var RSMQWorker = require( "rsmq-worker" );
 var worker = new RSMQWorker( "loggly" );
 
 
-var  RedisSMQ = require("rsmq");
-var  rsmq = new RedisSMQ( {host: "127.0.0.1", port: 6379, ns: "rsmq"} );
+//var  RedisSMQ = require("rsmq");
+//var  rsmq = new RedisSMQ( {host: "127.0.0.1", port: 6379, ns: "rsmq"} );
 
 worker.on( "message", function( msg, next ){
-
-postloggly(msg);
-
+//	console.log(msg);
+	postloggly(msg);
 
 next()
 });
@@ -35,7 +34,7 @@ function postloggly(msg){
 
       var args = "-H \"content-type:text/plain\" -d" + msg + " " + "http://logs-01.loggly.com/inputs/1244c9f6-5535-4a5b-86ed-0895109a0b84/tag/tkpowerv3/";
 
-      console.log(args);
+     // console.log(args);
 
       exec('curl ' + args, function (error, stdout, stderr) {
         console.log('stdout: ' + stdout);
@@ -47,3 +46,4 @@ function postloggly(msg){
 
 
 }
+worker.start();

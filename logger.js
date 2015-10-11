@@ -64,11 +64,13 @@ var esclient = new elasticsearch.Client({
       totalamps:(objData.sumamps)
     };
 
-    rsmq.sendMessage({qname:"loggly", message:(LogglyData)}, function (err, resp) {
+	LogglyData = JSON.stringify(LogglyData);
+
+    rsmq.sendMessage({qname:"loggly", message: LogglyData}, function (err, resp) {
      if (err) {
          console.log(err);
      }
-     //console.log("loggly");
+     console.log(LogglyData);
    });
 
 
