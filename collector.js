@@ -38,11 +38,6 @@ function recieveSerialData(data) {
     }
   });
 
-
-
-
-
-
 }
 
 function showPortClose() {
